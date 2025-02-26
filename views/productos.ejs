@@ -1,0 +1,20 @@
+<div class="table-responsive">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% productos.forEach(function (producto) { %>
+            <tr>
+                <td><%= producto.Id_Producto %></td>
+                <td><%= producto.Nombre_Producto %></td>
+                <td><%= producto.Precio %></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
