@@ -18,27 +18,37 @@ const con = mysql.createConnection({
 });
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-    con.connect(function (err) {
+    res.render("index");
+});
+app.get("/holaMundo", function (req, res) {
+    res.send("Hola Mundo");
+});
+app.get("/app", function (req, res) {
+    res.send("<h5>Hola, soy la view app</h5>")
+});
+app.get("/productos", function (req, res) {
+    con.connect(function(err) {
         if (err) throw err;
         con.query("SELECT * FROM productos;", function (err, result, fields) {
             if (err) throw err;
-            res.render("index", {
+            res.render("productos", {
                 productos: result
             });
         });
     });
 });
-app.get("/holaMundo", function (req, res) {
-    res.send("Hola Mundo");
-});
-app.get("/productos", function (req, res) {
+app.get("/ventas", function (req, res) {
     con.connect(function(err) {
         if (err) throw err;
-        con.query("SELECT * FROM productos", function (err, result, fields) {
+        con.query(`SELECT * FROM ventas
+            INNER JOIN usuarios ON usuarios.Id_Usuario = ventas.Id_Usuario;`, function (err, result, fields) {
             if (err) throw err;
-            res.json(result);
+            res.render("ventas", {
+                ventas: result
+            });
         });
     });
 });
