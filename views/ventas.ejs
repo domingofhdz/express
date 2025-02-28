@@ -1,22 +1,24 @@
-<table class="table table-sm">
-    <thead class="table-active">
-        <tr>
-            <th>Id</th>
-            <th>Usuario</th>
-            <th>Fecha Hora</th>
-            <th>Pago</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% ventas.forEach(function (venta) { %>
+<div class="table-responsive">
+    <table class="table table-sm">
+        <thead class="table-active">
             <tr>
-                <td scope="col"><%= venta.Id_Venta %></td>
-                <td scope="col"><%= venta.Nombre_Usuario %></td>
-                <td scope="col"><%= venta.Fecha_Hora %></td>
-                <td scope="col">$<%= venta.Pago %></td>
-                <td scope="col"></td>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Fecha Hora</th>
+                <th>Pago</th>
+                <th></th>
             </tr>
-        <% }); %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% ventas.forEach(function (venta) { %>
+                <tr>
+                    <td scope="col"><%= venta.Id_Venta %></td>
+                    <td scope="col"><%= venta.Nombre_Usuario %></td>
+                    <td scope="col"><%= venta.Fecha_Hora %></td>
+                    <td scope="col">$<%= venta.Pago %></td>
+                    <td scope="col"></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
